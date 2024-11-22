@@ -1,0 +1,193 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+section .imgbox {
+    position: relative;
+    width: 50%;
+    height: 75%;
+}
+
+section .imgbox:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    mix-blend-mode: screen;
+}
+
+section .imgbox img {
+    position: absolute;
+    top: 85;
+    left: 80;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+section .cntbox {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+section .cntbox .frmbox {
+    width: 50%;
+    background: linear-gradient(135deg, #ffffff, #ffffff);
+    border-radius: 15px;
+    padding: 25px 25px 25px 25px;
+    box-shadow: 0 5px 10px #19d4cbc5;
+    border: 1px solid rgb(10, 226, 10);
+}
+
+section .cntbox .frmbox h2 {
+    color: #000000;
+    font-weight: 600;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 4px solid #108a05;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+section .cntbox .frmbox .inputbx {
+    margin-bottom: 20px;
+}
+
+section .cntbox .frmbox .inputbx span {
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: #ffffff;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+section .cntbox .frmbox .inputbx input {
+    width: 100%;
+    padding: 10px 20px;
+    outline: none;
+    font-weight: 400;
+    border: 1px solid #0000009a;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #000000;
+    background: transparent;
+    border-radius: 30px;
+}
+
+section .cntbox .frmbox .inputbx input[type="submit"] {
+    background: #09e026;
+    color: black;
+    outline: none;
+    border: 1px solid rgba(28, 90, 3, 0.863);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+section .cntbox .frmbox .inputbx input[type="submit"]:hover {
+    background-color: #07a01b;
+}
+
+section .cntbox .frmbox .remember {
+    margin-bottom: 10px;
+    color: #000000c2;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+section .cntbox .frmbox .inputbx p {
+    color: #000000;
+}
+
+section .cntbox .frmbox .inputbx p a {
+    color: #ff4584;
+}
+
+section .cntbox .frmbox h3 {
+    color: #000000;
+    text-align: center;
+    margin: 80px 0 10px;
+    font-weight: 500;
+}
+
+section .cntbox .frmbox .sci {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section .cntbox .frmbox .sci li {
+    list-style: none;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3e3d41;
+    border-radius: 50%;
+    margin: 0 7px;
+    cursor: pointer;
+}
+
+section .cntbox .frmbox .sci li:hover {
+    background-color: #ff4584;
+}
+
+section .cntbox .frmbox .sci li i {
+    transform: scale(1.5);
+    filter: invert(1);
+}
+
+@media(max-width:768px) {
+    section .imgbox {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    section .cntbox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    section .cntbox .frmbox {
+        width: 100%;
+        padding: 40px;
+        background: rgb(255, 255, 255/0.9);
+        margin: 50px;
+    }
+
+    section .cntbox .frmbox h3 {
+        color: #607d8b;
+        text-align: center;
+        margin: 30px 0 10px;
+        font-weight: 500;
+    }
+}

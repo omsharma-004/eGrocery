@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Cart Items - eGrocery Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cart.css" />
+    <link rel="icon" href="rlogo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navigation">
+        <a href="main.html" class="logo">
+            <he>e</he>Grocery
+        </a>
+        <ul class="menu">
+            <li><a href="main.html">Home</a></li>
+            <li><a href="main.html#category">Category</a></li>
+            <li><a href="main.html#popular-product">Products</a></li>
+            <li><a href="main.html#download-app">Contact Us</a></li>
+        </ul>
+        <div class="right-navigation">
+            <a href="liked-items.html" class="like">
+                <i class="fa-regular fa-heart"></i>
+                <span>0</span>
+            </a>
+            <a href="#" class="cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span>0</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>Cart Items</h1>
+        <div id="cart-items-list" class="items-list"></div>
+        <div id="cart-total"></div>
+        <button id="purchase-btn" class="purchase-btn">Proceed to Purchase</button>
+    </main>
+
+    <footer>
+        <!-- Footer content remains the same -->
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cartItemsList = document.getElementById('cart-items-list');
+            const cartTotalElement = document.getElementById('cart-total');
+            const purchaseBtn = document.getElementById('purchase-btn');
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+            if (cartItems.length === 0) {
+                cartItemsList.innerHTML = '<p>Your cart is empty.</p>';
+                cartTotalElement.style.display = 'none';
+                purchaseBtn.style.display = 'none';
+            } else {
+                let total = 0;
+                const itemsHTML = cartItems.map(item => {
+                    const price = Math.floor(Math.random() * 50) + 10; // Random price between 10 and 59
+                    total += price;
+                    return `
+                        <div class="item">
+                            <div class="item-details">
+                                <h2>${item}</h2>
+                                <p>Price: ₹${price}</p>
+                                <p>Quantity: 1</p>
+                                <button class="remove-btn">Remove from Cart</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                cartItemsList.innerHTML = itemsHTML;
+                cartTotalElement.innerHTML = `<h2>Total: ₹${total}</h2>`;
+                cartTotalElement.style.display = 'block';
+                purchaseBtn.style.display = 'block';
+            }
+
+            // Update the cart count in the header
+            const cartCountElement = document.querySelector('.right-navigation .cart span');
+            cartCountElement.textContent = cartItems.length;
+
+            // Handle remove button clicks
+            cartItemsList.addEventListener('click', function (e) {
+                if (e.target.classList.contains('remove-btn')) {
+                    const itemName = e.target.closest('.item').querySelector('h2').textContent;
+                    const updatedCartItems = cartItems.filter(item => item !== itemName);
+                    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+                    location.reload();
+                }
+            });
+
+            // Handle purchase button click
+            purchaseBtn.addEventListener('click', function () {
+                window.location.href = 'payment.html';
+            });
+        });
+    </script>
+</body>
+
+</html>

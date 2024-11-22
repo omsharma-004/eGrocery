@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Payment - eGrocery Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="payment.css" />
+    <link rel="icon" href="rlogo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navigation">
+        <a href="main.html" class="logo">
+            <he>e</he>Grocery
+        </a>
+        <ul class="menu">
+            <li><a href="main.html">Home</a></li>
+            <li><a href="main.html#category">Category</a></li>
+            <li><a href="main.html#popular-product">Products</a></li>
+            <li><a href="main.html#download-app">Contact Us</a></li>
+        </ul>
+        <div class="right-navigation">
+            <a href="liked-items.html" class="like">
+                <i class="fa-regular fa-heart"></i>
+                <span>0</span>
+            </a>
+            <a href="#" class="cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span>0</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="container payment-container">
+        <h1>Secure Payment</h1>
+        <div class="payment-options">
+            <h2>Select Payment Method</h2>
+            <div class="payment-method">
+                <input type="radio" id="upi" name="payment" value="upi">
+                <label for="upi">
+                    <i class="fas fa-mobile-alt"></i>
+                    UPI
+                    <span class="payment-logos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/UPI-Logo-vector.svg/200px-UPI-Logo-vector.svg.png"
+                            alt="UPI" height="20">
+                    </span>
+                </label>
+            </div>
+            <div class="payment-method">
+                <input type="radio" id="netbanking" name="payment" value="netbanking">
+                <label for="netbanking">
+                    <i class="fas fa-university"></i>
+                    Net Banking
+                </label>
+            </div>
+            <div class="payment-method">
+                <input type="radio" id="card" name="payment" value="card">
+                <label for="card">
+                    <i class="far fa-credit-card"></i>
+                    Credit/Debit Card
+                    <span class="payment-logos">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-amex"></i>
+                    </span>
+                </label>
+            </div>
+            <div class="payment-method">
+                <input type="radio" id="cod" name="payment" value="cod">
+                <label for="cod">
+                    <i class="fas fa-money-bill-wave"></i>
+                    Cash on Delivery
+                </label>
+            </div>
+        </div>
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <div class="summary-item">
+                <span>Subtotal</span>
+                <span>₹450</span>
+            </div>
+            <div class="summary-item">
+                <span>Shipping</span>
+                <span>₹50</span>
+            </div>
+            <div class="summary-item total">
+                <span>Total</span>
+                <span>₹500</span>
+            </div>
+        </div>
+        <button id="confirm-payment" class="confirm-payment-btn">Confirm Payment</button>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const confirmPaymentBtn = document.getElementById('confirm-payment');
+
+            confirmPaymentBtn.addEventListener('click', function () {
+                alert('Order Placed Successfully.');
+            });
+        });
+    </script>
+</body>
+
+</html>

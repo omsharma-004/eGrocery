@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liked Items - eGrocery Store</title>
+    <link rel="stylesheet" href="likes.css" />
+    <link rel="icon" href="rlogo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navigation">
+        <a href="main.html" class="logo">
+            <he>e</he>Grocery
+        </a>
+        <ul class="menu">
+            <li><a href="main.html">Home</a></li>
+            <li><a href="main.html#category">Category</a></li>
+            <li><a href="main.html#popular-product">Products</a></li>
+            <li><a href="main.html#download-app">Contact Us</a></li>
+        </ul>
+        <div class="right-navigation">
+            <a href="liked-items.html" class="like">
+                <i class="fa-regular fa-heart"></i>
+                <span>0</span>
+            </a>
+            <a href="#" class="cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span>0</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>Liked Items</h1>
+        <div id="liked-items-list"></div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const likedItemsList = document.getElementById('liked-items-list');
+            let likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
+
+            function updateLikedItems() {
+                if (likedItems.length === 0) {
+                    likedItemsList.innerHTML = '<p>No liked items yet.</p>';
+                } else {
+                    const itemsHTML = likedItems.map((item, index) => `
+                        <div class="item">
+                            <span>${item}</span>
+                            <button class="remove-btn" data-index="${index}">Remove</button>
+                            <button class="add-to-cart-btn" data-item="${item}">Add to Cart</button>
+                        </div>
+                    `).join('');
+                    likedItemsList.innerHTML = itemsHTML;
+                }
+            }
+
+            function removeItem(index) {
+                likedItems.splice(index, 1);
+                localStorage.setItem('likedItems', JSON.stringify(likedItems));
+                updateLikedItems();
+            }
+
+            function addToCart(item) {
+                let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                if (!cartItems.includes(item)) {
+                    cartItems.push(item);
+                    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                    alert(`${item} added to cart!`);
+                } else {
+                    alert(`${item} is already in your cart!`);
+                }
+            }
+
+            likedItemsList.addEventListener('click', function (e) {
+                if (e.target.classList.contains('remove-btn')) {
+                    const index = parseInt(e.target.getAttribute('data-index'));
+                    removeItem(index);
+                } else if (e.target.classList.contains('add-to-cart-btn')) {
+                    const item = e.target.getAttribute('data-item');
+                    addToCart(item);
+                }
+            });
+
+            updateLikedItems();
+        });
+    </script>
+</body>
+
+</html>
